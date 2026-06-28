@@ -1,69 +1,208 @@
-# CodeIgniter 4 Application Starter
+# Lab11Web — Pemrograman Web 2
+**Nama:** Vivit Nurul Hidayah  
+**NIM:** 312410110  
+**Mata Kuliah:** Pemrograman Web 2  
+**Universitas:** Universitas Pelita Bangsa  
 
-## What is CodeIgniter?
+---
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Daftar Praktikum
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+| No | Topik | Teknologi |
+|----|-------|-----------|
+| 1  | Instalasi CodeIgniter 4 & Routing Dasar | CodeIgniter 4, PHP |
+| 2  | Controller, View, dan Routing Lanjut | CodeIgniter 4 |
+| 3  | Model dan Database | CodeIgniter 4, MySQL |
+| 4  | Autentikasi & Session (Login Admin) | CodeIgniter 4, Filter |
+| 5  | CRUD Artikel | CodeIgniter 4, MySQL |
+| 6  | Upload Gambar & Pagination | CodeIgniter 4 |
+| 7  | RESTful API dengan CI4 | CodeIgniter 4, REST API |
+| 8  | AJAX & Fetch API | JavaScript, Axios |
+| 9  | Pengenalan VueJS | VueJS 3 |
+| 10 | Komponen & Props VueJS | VueJS 3 |
+| 11 | Vue Router & SPA | VueJS 3, Vue Router |
+| 12 | Integrasi REST API dengan VueJS (SPA) | VueJS 3, Axios, CI4 |
+| 13 | Autentikasi & Navigation Guards (SPA Security) | VueJS 3, Vue Router, CI4 |
+| 14 | Keamanan API, Token Authentication & Axios Interceptors | VueJS 3, Axios, CI4 |
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+---
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+## Praktikum 1 – Pengenalan CodeIgniter 4
+Pada praktikum pertama ini, fokus utamanya adalah memahami dasar penggunaan framework CodeIgniter 4 serta konsep MVC yang digunakan.
 
-## Installation & updates
+<img width="657" height="671" alt="image" src="https://github.com/user-attachments/assets/2a6b18fc-b2fa-45e2-881e-c929f847ff67" />
+<img width="673" height="648" alt="image" src="https://github.com/user-attachments/assets/0e95017e-9afa-4e6d-9131-ddcc7fc1018b" />
+<img width="730" height="352" alt="image" src="https://github.com/user-attachments/assets/4756ef28-388c-4403-b918-8f08b5591f39" />
+<img width="775" height="728" alt="image" src="https://github.com/user-attachments/assets/dfbd41c1-b4c2-4735-bf95-da6ed73a3062" />
+<img width="881" height="673" alt="image" src="https://github.com/user-attachments/assets/191eb37f-5c58-4faa-a4ab-845c8f761dba" />
+<img width="855" height="664" alt="image" src="https://github.com/user-attachments/assets/3905e753-1f3d-4c25-bdb9-82acf7266bbe" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/810ccf9c-1b6e-4dba-97ac-98d2a6ec6395" />
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+- Persiapan dan Konfigurasi
+Sebelum memulai, perlu dilakukan pengaturan pada web server agar CI4 bisa berjalan dengan baik. Beberapa ekstensi PHP seperti JSON, MySQLi, XML, dan Intl harus diaktifkan melalui file php.ini di XAMPP. Setelah itu, Apache perlu direstart agar perubahan diterapkan.
 
-## Setup
+- Instalasi CodeIgniter 4
+Framework diinstal secara manual dengan cara mengunduh dari website resmi, lalu mengekstraknya ke dalam folder htdocs. Folder hasil ekstrak kemudian diubah namanya menjadi ci4 agar lebih mudah diakses melalui browser menggunakan path /public.
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+- Penggunaan CLI (Command Line Interface)
+CodeIgniter menyediakan tool bernama Spark untuk membantu proses development. Tool ini dijalankan melalui terminal dengan perintah php spark, yang berfungsi untuk menjalankan server, melihat route, dan berbagai perintah lainnya.
 
-## Important Change with index.php
+- Mode Debugging
+Secara default, error pada CI4 tidak ditampilkan secara detail. Oleh karena itu, file env perlu diubah menjadi .env, lalu nilai CI_ENVIRONMENT diganti menjadi development agar error dapat terlihat dengan jelas saat terjadi kesalahan.
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+- Struktur Folder & Konsep MVC
+Framework ini menggunakan konsep MVC:
+Model: mengelola data dan database
+View: menangani tampilan (UI)
+Controller: mengatur alur logika aplikasi
+Fokus utama pengembangan berada di folder app, sedangkan file publik seperti CSS disimpan di folder public.
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+- Routing dan Controller
+Routing berfungsi untuk mengatur URL agar terhubung ke controller tertentu. Konfigurasi dilakukan di file Routes.php. Contohnya, URL /about bisa diarahkan ke method about() dalam controller Page.
 
-**Please** read the user guide for a better explanation of how CI4 works!
+- Pembuatan Layout
+Untuk membuat tampilan lebih rapi dan konsisten, digunakan template seperti header dan footer. File CSS disimpan di folder public, lalu dipanggil melalui view menggunakan base_url().
 
-## Repository Management
+## Praktikum 2 – CRUD Database
+Pada praktikum ini mulai masuk ke pengolahan data menggunakan database MySQL.
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+<img width="775" height="728" alt="image" src="https://github.com/user-attachments/assets/20ee9c0e-4211-41cb-8e5d-34e80f4f27df" />
+<img width="855" height="664" alt="image" src="https://github.com/user-attachments/assets/3ada6f0b-a313-48ff-96e9-c38eb1eb5890" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/41ac7aa5-d120-44b2-b465-a382309403c9" />
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+- Pembuatan Database
+Langkah awal adalah membuat database dan tabel artikel yang berisi beberapa field seperti judul, isi, gambar, dan lainnya. Selanjutnya, koneksi database diatur melalui file .env.
 
-## Server Requirements
+- Model
+Model dibuat untuk mengelola data dari tabel. Di dalamnya ditentukan nama tabel, primary key, serta field yang boleh diisi.
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+- Menampilkan Data (Read)
+Controller mengambil data dari model menggunakan fungsi seperti findAll(), lalu dikirim ke view untuk ditampilkan dalam bentuk daftar.
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+- Detail Artikel
+Fitur ini memungkinkan user melihat isi artikel secara lengkap. Data diambil berdasarkan slug, sehingga URL menjadi lebih rapi dan SEO-friendly.
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+- CRUD (Create, Update, Delete)
+Create: menambahkan data baru melalui form
+Update: mengubah data yang sudah ada
+Delete: menghapus data tertentu
+Admin Page: menampilkan daftar data dengan tombol aksi
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## Praktikum 3 – Layout dan View Cell
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Praktikum ini fokus pada pengelolaan tampilan agar lebih modular dan reusable.
+<img width="1919" height="949" alt="image" src="https://github.com/user-attachments/assets/9aa2be8b-dc77-4db7-a0f5-a345a2bb1bf2" />
+<img width="1919" height="945" alt="image" src="https://github.com/user-attachments/assets/3cfae0f5-a71e-42cd-bebe-b20e5312481b" />
+<img width="1918" height="945" alt="image" src="https://github.com/user-attachments/assets/191ae9a7-95bc-4cd9-831a-e6cc3792e3b9" />
+<img width="1919" height="946" alt="image" src="https://github.com/user-attachments/assets/ecaf59fb-fb08-4c53-9976-cac02a7f63f2" />
+<img width="1919" height="956" alt="image" src="https://github.com/user-attachments/assets/3ff18a41-42bb-4b85-a98b-34c24f8b979f" />
+<img width="1915" height="951" alt="image" src="https://github.com/user-attachments/assets/a40a8ffc-ddc3-419e-b920-2d81394d8288" />
+
+- View Layout
+Layout digunakan sebagai template utama yang berisi struktur dasar HTML. Halaman lain cukup mengisi bagian tertentu saja menggunakan konsep section, sehingga tidak perlu menulis ulang kode yang sama.
+
+- View Cell
+View Cell digunakan untuk membuat komponen kecil yang bisa digunakan berulang, seperti sidebar atau daftar artikel terbaru. Komponen ini memiliki logic sendiri dan bisa dipanggil langsung dari layout.
+
+## Praktikum 4 – Login dan Authentication
+Pada tahap ini, aplikasi mulai dilengkapi dengan sistem login.
+
+<img width="1365" height="678" alt="image" src="https://github.com/user-attachments/assets/ff47f47e-3a6a-4918-9360-c07894b536ae" />
+
+
+- Tabel User
+Database dibuat dengan tabel user yang menyimpan data seperti username, email, dan password.
+
+- Model User
+Model digunakan untuk menghubungkan aplikasi dengan tabel user, serta mengatur field yang digunakan.
+
+- Controller Login
+Controller menangani proses login dan logout. Data dari form akan dicek ke database, dan jika sesuai, akan disimpan dalam session.
+
+- View Login
+Halaman login berisi form input email dan password. Jika terjadi kesalahan, akan ditampilkan pesan menggunakan flashdata.
+
+- Seeder
+Seeder digunakan untuk menambahkan data dummy ke database melalui CLI, sehingga tidak perlu input manual.
+
+- Filter Authentication
+Filter berfungsi untuk membatasi akses ke halaman tertentu. Jika user belum login, maka otomatis akan diarahkan ke halaman login.
+
+### Praktikum 5 — CRUD Artikel
+Implementasi fitur Create, Read, Update, Delete (CRUD) untuk data artikel pada panel admin. Menggunakan Form POST dan redirect setelah operasi berhasil. Hasil: admin dapat menambah, mengedit, dan menghapus artikel melalui antarmuka web.
+
+### Praktikum 6 — Upload Gambar & Pagination
+Menambahkan fitur upload gambar pada form artikel menggunakan library `UploadedFile` CI4. Menerapkan paginasi data pada halaman daftar artikel. Hasil: artikel dapat dilengkapi gambar dan daftar artikel tampil per halaman.
+
+### Praktikum 7 — RESTful API dengan CI4
+Membuat endpoint RESTful API menggunakan `ResourceController` CI4. Mendefinisikan route resource untuk operasi GET, POST, PUT, DELETE pada data artikel (`/post`). Hasil: API dapat dikonsumsi oleh client eksternal seperti Postman.
+
+### Praktikum 8 — AJAX & Fetch API
+Mengimplementasikan AJAX pada halaman admin artikel menggunakan JavaScript dan Axios. Data artikel dimuat secara asinkron tanpa reload halaman. Menambahkan fitur pencarian, filter kategori, dan sorting berbasis AJAX. Hasil: halaman admin artikel lebih responsif dan interaktif.
+
+### Praktikum 9 — Pengenalan VueJS
+Pengenalan framework JavaScript VueJS 3. Mempelajari konsep reaktivitas, data binding (`v-model`, `v-bind`), direktif (`v-if`, `v-for`), dan event handling (`@click`). Hasil: halaman sederhana interaktif menggunakan VueJS tanpa build tool (CDN).
+
+### Praktikum 10 — Komponen & Props VueJS
+Mempelajari konsep komponen pada VueJS 3. Membuat komponen terpisah dan mengirim data antar komponen menggunakan Props. Hasil: aplikasi VueJS terdiri dari komponen-komponen yang dapat digunakan ulang.
+
+### Praktikum 11 — Vue Router & SPA
+Mengimplementasikan Vue Router untuk membangun Single Page Application (SPA). Mendefinisikan rute (`/`, `/artikel`, `/about`) yang dipetakan ke komponen berbeda tanpa reload halaman. Hasil: navigasi antar halaman berjalan mulus sebagai SPA.
+
+### Praktikum 12 — Integrasi REST API dengan VueJS
+Menghubungkan frontend VueJS SPA dengan backend REST API CodeIgniter 4 menggunakan Axios. Komponen `Artikel.js` menampilkan, menambah, mengedit, dan menghapus data artikel secara real-time melalui API. Hasil: aplikasi SPA terintegrasi penuh dengan backend CI4.
+
+### Praktikum 13 — Autentikasi & Navigation Guards
+Membuat sistem autentikasi berbasis token sederhana pada SPA. Sisi backend: endpoint `POST /api/login` pada CI4 memvalidasi kredensial dan mengembalikan token. Sisi frontend: Navigation Guards (`router.beforeEach`) mencegah akses ke halaman terproteksi (`/artikel`, `/about`) bagi pengguna yang belum login. Token dan status login disimpan di `localStorage` browser. Hasil: halaman terlindungi hanya bisa diakses setelah login berhasil.
+
+### Praktikum 14 — Keamanan API, Token Authentication & Axios Interceptors
+Menambahkan lapisan keamanan di sisi server menggunakan CI4 Filter (`ApiAuthFilter`). Filter memeriksa keberadaan token pada HTTP Header `Authorization: Bearer <token>` setiap request masuk ke endpoint sensitif (POST/PUT/DELETE). Sisi frontend: Axios Interceptors dikonfigurasi untuk menyuntikkan token secara otomatis ke setiap request tanpa perlu menulis kode manual berulang. Hasil: endpoint API terlindungi dari akses ilegal (mengembalikan `401 Unauthorized` jika tanpa token), sedangkan operasi dari aplikasi frontend berjalan normal karena token dikirim secara otomatis.
+
+---
+
+## Alur Kerja Sistem
+
+```
+[Browser/VueJS SPA]
+       |
+       | HTTP Request + Authorization: Bearer <token>  (via Axios Interceptors)
+       ↓
+[CI4 Backend]
+       |
+       | ApiAuthFilter → cek token → tolak 401 jika tidak ada
+       ↓
+[Controller API] → [Model] → [Database MySQL]
+       |
+       | JSON Response
+       ↓
+[VueJS] → render data ke tampilan
+```
+
+---
+
+## Perbedaan Navigation Guards vs CI4 Filter
+
+| Aspek | Vue Router Navigation Guards | CodeIgniter Filter (ApiAuthFilter) |
+|-------|-----------------------------|------------------------------------|
+| Lokasi | Sisi klien (browser) | Sisi server (CI4) |
+| Fungsi | Mencegah perpindahan rute di SPA | Memblokir request HTTP ke endpoint API |
+| Cara kerja | Cek `localStorage` sebelum render komponen | Cek HTTP Header `Authorization` sebelum proses request |
+| Kelemahan | Bisa dibypass via DevTools browser | Tidak bisa dibypass dari sisi klien |
+| Kesimpulan | Keamanan UI/UX saja | Keamanan data sesungguhnya |
+
+> **Kesimpulan:** Navigation Guards hanya melindungi tampilan di sisi klien dan mudah dibypass. CI4 Filter melindungi data di sisi server secara nyata — keduanya perlu digunakan bersama untuk keamanan end-to-end yang optimal.
+
+---
+
+## Teknologi yang Digunakan
+- **Backend:** PHP 8, CodeIgniter 4, MySQL (XAMPP)
+- **Frontend:** VueJS 3 (CDN), Vue Router 4, Axios
+- **Tools:** Visual Studio Code, Postman, Git & GitHub
+## KESIMPULAN
+Dari praktikum 1–4, dapat dipahami bahwa:
+- CodeIgniter 4 mempermudah pengembangan web dengan konsep MVC
+- Routing, controller, dan view saling terhubung dalam alur aplikasi
+- Database digunakan untuk mengelola data secara dinamis
+- Layout dan view cell membantu membuat tampilan lebih rapi
+- Sistem login menambah keamanan dan kontrol akses
