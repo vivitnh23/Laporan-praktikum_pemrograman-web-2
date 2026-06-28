@@ -130,33 +130,60 @@ Seeder digunakan untuk menambahkan data dummy ke database melalui CLI, sehingga 
 Filter berfungsi untuk membatasi akses ke halaman tertentu. Jika user belum login, maka otomatis akan diarahkan ke halaman login.
 
 ### Praktikum 5 — CRUD Artikel
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/37112167-f160-4c50-9605-648b74f03734" />
+<img width="1365" height="676" alt="image" src="https://github.com/user-attachments/assets/5fd12fa5-eb96-464b-b423-e650709d66fe" />
+
+
 Implementasi fitur Create, Read, Update, Delete (CRUD) untuk data artikel pada panel admin. Menggunakan Form POST dan redirect setelah operasi berhasil. Hasil: admin dapat menambah, mengedit, dan menghapus artikel melalui antarmuka web.
 
 ### Praktikum 6 — Upload Gambar & Pagination
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/0cc294d8-e61b-4e00-a8ed-42852ffaa96d" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/cd4df616-9f58-45c6-b912-164f543905b3" />
+
 Menambahkan fitur upload gambar pada form artikel menggunakan library `UploadedFile` CI4. Menerapkan paginasi data pada halaman daftar artikel. Hasil: artikel dapat dilengkapi gambar dan daftar artikel tampil per halaman.
 
 ### Praktikum 7 — RESTful API dengan CI4
+
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2f8983e9-2c1e-4e37-be5b-ea1b6bfdac7c" />
+
 Membuat endpoint RESTful API menggunakan `ResourceController` CI4. Mendefinisikan route resource untuk operasi GET, POST, PUT, DELETE pada data artikel (`/post`). Hasil: API dapat dikonsumsi oleh client eksternal seperti Postman.
 
 ### Praktikum 8 — AJAX & Fetch API
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/092468ee-0ec0-4aef-8579-deece1f8d5e2" />
+
 Mengimplementasikan AJAX pada halaman admin artikel menggunakan JavaScript dan Axios. Data artikel dimuat secara asinkron tanpa reload halaman. Menambahkan fitur pencarian, filter kategori, dan sorting berbasis AJAX. Hasil: halaman admin artikel lebih responsif dan interaktif.
 
 ### Praktikum 9 — Pengenalan VueJS
+<img width="1365" height="682" alt="image" src="https://github.com/user-attachments/assets/6981a573-74c8-4c8e-9e25-a6643f2d2c1d" />
+
 Pengenalan framework JavaScript VueJS 3. Mempelajari konsep reaktivitas, data binding (`v-model`, `v-bind`), direktif (`v-if`, `v-for`), dan event handling (`@click`). Hasil: halaman sederhana interaktif menggunakan VueJS tanpa build tool (CDN).
 
 ### Praktikum 10 — Komponen & Props VueJS
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/b0255901-3208-4260-ad07-db58c9a6db06" />
+
 Mempelajari konsep komponen pada VueJS 3. Membuat komponen terpisah dan mengirim data antar komponen menggunakan Props. Hasil: aplikasi VueJS terdiri dari komponen-komponen yang dapat digunakan ulang.
 
 ### Praktikum 11 — Vue Router & SPA
+<img width="1365" height="686" alt="image" src="https://github.com/user-attachments/assets/ab50aad5-0297-4a7d-8b4e-b86f42fe05da" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/51b3660a-2661-4d67-b8b6-27dc726ac398" />
+
 Mengimplementasikan Vue Router untuk membangun Single Page Application (SPA). Mendefinisikan rute (`/`, `/artikel`, `/about`) yang dipetakan ke komponen berbeda tanpa reload halaman. Hasil: navigasi antar halaman berjalan mulus sebagai SPA.
 
 ### Praktikum 12 — Integrasi REST API dengan VueJS
+<img width="1365" height="675" alt="image" src="https://github.com/user-attachments/assets/8dd89b6e-4c27-46a5-929f-e7f82e1d1f07" />
+<img width="1365" height="289" alt="image" src="https://github.com/user-attachments/assets/d6acdfe3-16f5-4893-9c0c-f03e3c6c0bfc" />
+
 Menghubungkan frontend VueJS SPA dengan backend REST API CodeIgniter 4 menggunakan Axios. Komponen `Artikel.js` menampilkan, menambah, mengedit, dan menghapus data artikel secara real-time melalui API. Hasil: aplikasi SPA terintegrasi penuh dengan backend CI4.
 
 ### Praktikum 13 — Autentikasi & Navigation Guards
+<img width="1365" height="672" alt="image" src="https://github.com/user-attachments/assets/8820103b-6b00-432b-b003-c7c8dfc04178" />
+
 Membuat sistem autentikasi berbasis token sederhana pada SPA. Sisi backend: endpoint `POST /api/login` pada CI4 memvalidasi kredensial dan mengembalikan token. Sisi frontend: Navigation Guards (`router.beforeEach`) mencegah akses ke halaman terproteksi (`/artikel`, `/about`) bagi pengguna yang belum login. Token dan status login disimpan di `localStorage` browser. Hasil: halaman terlindungi hanya bisa diakses setelah login berhasil.
 
 ### Praktikum 14 — Keamanan API, Token Authentication & Axios Interceptors
+<img width="1366" height="768" alt="Screenshot 2026-06-28 133713" src="https://github.com/user-attachments/assets/145a90c2-ea8b-4645-a436-ce17519d6faa" />
+
 Menambahkan lapisan keamanan di sisi server menggunakan CI4 Filter (`ApiAuthFilter`). Filter memeriksa keberadaan token pada HTTP Header `Authorization: Bearer <token>` setiap request masuk ke endpoint sensitif (POST/PUT/DELETE). Sisi frontend: Axios Interceptors dikonfigurasi untuk menyuntikkan token secara otomatis ke setiap request tanpa perlu menulis kode manual berulang. Hasil: endpoint API terlindungi dari akses ilegal (mengembalikan `401 Unauthorized` jika tanpa token), sedangkan operasi dari aplikasi frontend berjalan normal karena token dikirim secara otomatis.
 
 ---
